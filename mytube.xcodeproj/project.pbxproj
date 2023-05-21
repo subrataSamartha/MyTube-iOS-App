@@ -13,10 +13,13 @@
 		9C13617F2A1571A80036589D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C13617D2A1571A80036589D /* Main.storyboard */; };
 		9C1361812A1571AA0036589D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C1361802A1571AA0036589D /* Assets.xcassets */; };
 		9C1361842A1571AA0036589D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1361822A1571AA0036589D /* LaunchScreen.storyboard */; };
-		9C1361902A1587A70036589D /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C13618F2A1587A70036589D /* APIData.swift */; };
 		9C1361932A158DB20036589D /* HomeFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1361922A158DB20036589D /* HomeFeedViewController.swift */; };
 		9C1361972A158ED50036589D /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1361952A158ED50036589D /* VideosTableViewCell.swift */; };
 		9C1361982A158ED50036589D /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1361962A158ED50036589D /* VideosTableViewCell.xib */; };
+		9C979BD02A19710A00FF5F18 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C979BCF2A19710A00FF5F18 /* NetworkManager.swift */; };
+		9C979BD32A19715100FF5F18 /* VideosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C979BD22A19715100FF5F18 /* VideosModel.swift */; };
+		9C979BD52A1983EE00FF5F18 /* APIRes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9C979BD42A1983EE00FF5F18 /* APIRes.json */; };
+		9CEE7F842A16552C00654376 /* VideoPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE7F832A16552C00654376 /* VideoPlayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +31,13 @@
 		9C1361802A1571AA0036589D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C1361832A1571AA0036589D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C1361852A1571AA0036589D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C13618F2A1587A70036589D /* APIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
 		9C1361922A158DB20036589D /* HomeFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedViewController.swift; sourceTree = "<group>"; };
 		9C1361952A158ED50036589D /* VideosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosTableViewCell.swift; sourceTree = "<group>"; };
 		9C1361962A158ED50036589D /* VideosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideosTableViewCell.xib; sourceTree = "<group>"; };
+		9C979BCF2A19710A00FF5F18 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9C979BD22A19715100FF5F18 /* VideosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosModel.swift; sourceTree = "<group>"; };
+		9C979BD42A1983EE00FF5F18 /* APIRes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = APIRes.json; path = ../../../../../APIRes.json; sourceTree = "<group>"; };
+		9CEE7F832A16552C00654376 /* VideoPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,13 +70,15 @@
 		9C1361762A1571A80036589D /* mytube */ = {
 			isa = PBXGroup;
 			children = (
-				9C13618F2A1587A70036589D /* APIData.swift */,
+				9C979BD42A1983EE00FF5F18 /* APIRes.json */,
 				9C1361772A1571A80036589D /* AppDelegate.swift */,
 				9C1361792A1571A80036589D /* SceneDelegate.swift */,
 				9C13617B2A1571A80036589D /* ViewController.swift */,
 				9C13617D2A1571A80036589D /* Main.storyboard */,
+				9C979BD12A19712A00FF5F18 /* Model */,
 				9C1361912A158D800036589D /* Screens */,
 				9C1361942A158E510036589D /* Utility */,
+				9C979BCF2A19710A00FF5F18 /* NetworkManager.swift */,
 				9C1361802A1571AA0036589D /* Assets.xcassets */,
 				9C1361822A1571AA0036589D /* LaunchScreen.storyboard */,
 				9C1361852A1571AA0036589D /* Info.plist */,
@@ -82,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				9C1361922A158DB20036589D /* HomeFeedViewController.swift */,
+				9CEE7F832A16552C00654376 /* VideoPlayViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -93,6 +102,14 @@
 				9C1361962A158ED50036589D /* VideosTableViewCell.xib */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		9C979BD12A19712A00FF5F18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C979BD22A19715100FF5F18 /* VideosModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +172,7 @@
 			files = (
 				9C1361842A1571AA0036589D /* LaunchScreen.storyboard in Resources */,
 				9C1361982A158ED50036589D /* VideosTableViewCell.xib in Resources */,
+				9C979BD52A1983EE00FF5F18 /* APIRes.json in Resources */,
 				9C1361812A1571AA0036589D /* Assets.xcassets in Resources */,
 				9C13617F2A1571A80036589D /* Main.storyboard in Resources */,
 			);
@@ -167,7 +185,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C1361902A1587A70036589D /* APIData.swift in Sources */,
+				9C979BD02A19710A00FF5F18 /* NetworkManager.swift in Sources */,
+				9C979BD32A19715100FF5F18 /* VideosModel.swift in Sources */,
+				9CEE7F842A16552C00654376 /* VideoPlayViewController.swift in Sources */,
 				9C1361972A158ED50036589D /* VideosTableViewCell.swift in Sources */,
 				9C13617C2A1571A80036589D /* ViewController.swift in Sources */,
 				9C1361782A1571A80036589D /* AppDelegate.swift in Sources */,
