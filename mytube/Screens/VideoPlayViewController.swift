@@ -11,9 +11,6 @@ class VideoPlayViewController: UIViewController {
     
     @IBOutlet weak var videosTableView: UITableView!
     
-    var videoDictionary: [String: String] =
-    ["title": "", "thumbnail": "", "channelName": "", "profilePic": "", "views": "", "timeStamp": ""]
-    
     var videoOnPlayer: video = video(id: Int(), title: String(), thumbnail: String(), channelName: String(), profilePic: String(), views: String(), timeStamp: String(), liked: Bool(), likeCount: Int(), disliked: Bool(), subscribe: Bool())
     
     @IBOutlet weak var videoTitleLabel: UILabel!
@@ -30,7 +27,7 @@ class VideoPlayViewController: UIViewController {
     
     
     
-    var videosRes:VideosModel = VideosModel(videos: [])
+//    var videosRes:VideosModel = HomeFeedViewController.videosRes
     
     
     override func viewDidLoad() {
@@ -46,23 +43,40 @@ class VideoPlayViewController: UIViewController {
         profilePicImageView.image = UIImage(named: videoOnPlayer.profilePic)
         viewsLabel.text = (videoOnPlayer.views) + " views"
         timeStampLabel.text = "uploaded " + videoOnPlayer.timeStamp
-        
-        NetworkManager.shared.getVideos { videosData, errorMessage in
-            if let errorMessage = errorMessage {
-                print(errorMessage)
-                return
-            }
-            
-            guard let videos = videosData else {
-                print("No data")
-                return
-            }
-            
-//            for video:VideosModel in videos {
-//                print(video.title)
-//            }
-            self.videosRes = videos
+        if(videoOnPlayer.liked) {
+            let smallConfig = UIImage.SymbolConfiguration(scale: .small)
+            let filledThumbsUpImage = UIImage(systemName: "hand.thumbsup.fill", withConfiguration: smallConfig)
+            likeButton.setImage(filledThumbsUpImage, for: .normal)
+            dislikeButton.setImage(UIImage(systemName: "hand.thumbsdown", withConfiguration: smallConfig), for: .normal)
+            likeButton.setTitle(String(videoOnPlayer.likeCount), for: .normal)
+        } else {
+            let smallConfig = UIImage.SymbolConfiguration(scale: .small)
+            let filledThumbsUpImage = UIImage(systemName: "hand.thumbsup", withConfiguration: smallConfig)
+            likeButton.setImage(filledThumbsUpImage, for: .normal)
+            likeButton.setTitle(String(videoOnPlayer.likeCount), for: .normal)
         }
+        
+        if(videoOnPlayer.disliked) {
+            let smallConfig = UIImage.SymbolConfiguration(scale: .small)
+            let filledThumbsDownImage = UIImage(systemName: "hand.thumbsdown.fill", withConfiguration: smallConfig)
+            dislikeButton.setImage(filledThumbsDownImage, for: .normal)
+            likeButton.setImage(UIImage(systemName: "hand.thumbsup", withConfiguration: smallConfig), for: .normal)
+            likeButton.setTitle(String(videoOnPlayer.likeCount), for: .normal)
+            
+        } else {
+            let smallConfig = UIImage.SymbolConfiguration(scale: .small)
+            let ThumbsDownImage = UIImage(systemName: "hand.thumbsdown", withConfiguration: smallConfig)
+            dislikeButton.setImage(ThumbsDownImage, for: .normal)
+        }
+        
+        if(videoOnPlayer.subscribe) {
+            let attributedText = NSAttributedString(string: "Subscribed", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica Neue", size: 14) as Any])
+            subscribeButton.setAttributedTitle(attributedText, for: .normal)
+        } else {
+            let attributedText = NSAttributedString(string: "Subscribe", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica Neue", size: 14) as Any])
+            subscribeButton.setAttributedTitle(attributedText, for: .normal)
+        }
+        
         
     }
     
@@ -79,12 +93,20 @@ class VideoPlayViewController: UIViewController {
             videoOnPlayer.likeCount = videoOnPlayer.likeCount + 1
             likeButton.setTitle(String(videoOnPlayer.likeCount), for: .normal)
             
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].liked = true;
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].disliked = false;
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].likeCount = videoOnPlayer.likeCount
+            
+            
         } else {
             let smallConfig = UIImage.SymbolConfiguration(scale: .small)
             let filledThumbsUpImage = UIImage(systemName: "hand.thumbsup", withConfiguration: smallConfig)
             likeButton.setImage(filledThumbsUpImage, for: .normal)
             videoOnPlayer.likeCount = videoOnPlayer.likeCount - 1
             likeButton.setTitle(String(videoOnPlayer.likeCount), for: .normal)
+            
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].liked = false;
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].likeCount = videoOnPlayer.likeCount
         }
         
                 
@@ -100,10 +122,15 @@ class VideoPlayViewController: UIViewController {
             videoOnPlayer.liked ? videoOnPlayer.likeCount = videoOnPlayer.likeCount - 1 : nil
             likeButton.setTitle(String(videoOnPlayer.likeCount), for: .normal)
             videoOnPlayer.liked = false
+            
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].liked = false;
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].disliked = true;
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].likeCount = videoOnPlayer.likeCount
         } else {
             let smallConfig = UIImage.SymbolConfiguration(scale: .small)
             let filledThumbsDownImage = UIImage(systemName: "hand.thumbsdown", withConfiguration: smallConfig)
             dislikeButton.setImage(filledThumbsDownImage, for: .normal)
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].disliked = false;
         }
     }
     
@@ -115,14 +142,17 @@ class VideoPlayViewController: UIViewController {
             subscribeButton.setAttributedTitle(attributedText, for: .normal)
 //            subscribeButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
             
-            
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].subscribe = true
+            UserData.shared.locallyStoredVideoAtributes.append(["subscription":true,
+                                                               ])
+            UserData.shared.updateVideoAttributeInUserData()
+                        
             
         } else {
-            
             let attributedText = NSAttributedString(string: "Subscribe", attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica Neue", size: 14) as Any])
             subscribeButton.setAttributedTitle(attributedText, for: .normal)
-//            subscribeButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
-            
+//          subscribeButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+            HomeFeedViewController.videosRes.videos[videoOnPlayer.id].subscribe = false
         }
     }
 }
@@ -131,18 +161,18 @@ extension VideoPlayViewController: UITableViewDelegate {}
 
 extension VideoPlayViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return videosRes.videos.count
+        return HomeFeedViewController.videosRes.videos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let videoCell = tableView.dequeueReusableCell(withIdentifier: "videoCell") as! VideosTableViewCell
         
-        videoCell.videoTitleLabel.text = videosRes.videos[indexPath.row].title
-        videoCell.tumbnailImageView.image = UIImage(named: videosRes.videos[indexPath.row].thumbnail)
-        videoCell.channelPicImageViw.image = UIImage(named: videosRes.videos[indexPath.row].profilePic)
-        videoCell.channelNameLabel.text = videosRes.videos[indexPath.row].channelName
-        videoCell.viewCountLabel.text = videosRes.videos[indexPath.row].views
-        videoCell.timeStatmpLabel.text = videosRes.videos[indexPath.row].timeStamp
+        videoCell.videoTitleLabel.text = HomeFeedViewController.videosRes.videos[indexPath.row].title
+        videoCell.tumbnailImageView.image = UIImage(named: HomeFeedViewController.videosRes.videos[indexPath.row].thumbnail)
+        videoCell.channelPicImageViw.image = UIImage(named: HomeFeedViewController.videosRes.videos[indexPath.row].profilePic)
+        videoCell.channelNameLabel.text = HomeFeedViewController.videosRes.videos[indexPath.row].channelName
+        videoCell.viewCountLabel.text = HomeFeedViewController.videosRes.videos[indexPath.row].views
+        videoCell.timeStatmpLabel.text = HomeFeedViewController.videosRes.videos[indexPath.row].timeStamp
         
         return videoCell
     }
@@ -151,7 +181,7 @@ extension VideoPlayViewController: UITableViewDataSource {
         let Storyboard = UIStoryboard(name: "Main", bundle: nil)
         let videoPlayVC = Storyboard.instantiateViewController(withIdentifier: "videoPlayVC") as! VideoPlayViewController
     
-        videoPlayVC.videoOnPlayer = videosRes.videos[indexPath.row]
+        videoPlayVC.videoOnPlayer = HomeFeedViewController.videosRes.videos[indexPath.row]
         
         self.navigationController?.pushViewController(videoPlayVC, animated: true)
     }
