@@ -65,14 +65,9 @@ extension HomeFeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let Storyboard = UIStoryboard(name: "Main", bundle: nil)
         let videoPlayVC = Storyboard.instantiateViewController(withIdentifier: "videoPlayVC") as! VideoPlayViewController
-    
-        videoPlayVC.videoDictionary["title"] = videosRes.videos[indexPath.row].title
-        videoPlayVC.videoDictionary["thumbnail"] = videosRes.videos[indexPath.row].thumbnail
-        videoPlayVC.videoDictionary["channelName"] = videosRes.videos[indexPath.row].channelName
-        videoPlayVC.videoDictionary["profilePic"] = videosRes.videos[indexPath.row].profilePic
-        videoPlayVC.videoDictionary["views"] = videosRes.videos[indexPath.row].views
-        videoPlayVC.videoDictionary["timeStamp"] = videosRes.videos[indexPath.row].timeStamp
         
+        videoPlayVC.videoOnPlayer = videosRes.videos[indexPath.row]
+    
         
         self.navigationController?.pushViewController(videoPlayVC, animated: true)
     }

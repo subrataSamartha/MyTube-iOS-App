@@ -160,9 +160,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioa-uW-gVc">
-                                            <rect key="frame" x="12" y="110.66666666666667" width="50" height="24.000000000000014"/>
+                                            <rect key="frame" x="12" y="110.66666666666667" width="51" height="24.000000000000014"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="4KQ-7S-pX4"/>
                                                 <constraint firstAttribute="height" constant="24" id="owE-PU-AOs"/>
                                             </constraints>
                                             <state key="normal" title="Button"/>
@@ -172,9 +171,12 @@
                                                 <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="baseBackgroundColor" systemColor="systemGray6Color"/>
                                             </buttonConfiguration>
+                                            <connections>
+                                                <action selector="doLikeVideo:" destination="Qwp-aU-3rt" eventType="touchUpInside" id="YSe-FT-2lW"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJe-Gb-DBA">
-                                            <rect key="frame" x="67" y="110.66666666666667" width="50" height="24.000000000000014"/>
+                                            <rect key="frame" x="68" y="110.66666666666667" width="50" height="24.000000000000014"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="tbv-aK-ZQo"/>
                                                 <constraint firstAttribute="width" constant="50" id="zOv-Sy-ex2"/>
@@ -185,9 +187,12 @@
                                                 <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="baseBackgroundColor" systemColor="systemGray6Color"/>
                                             </buttonConfiguration>
+                                            <connections>
+                                                <action selector="doDislikeVideo:" destination="Qwp-aU-3rt" eventType="touchUpInside" id="uNF-if-IrN"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKc-gb-rUe">
-                                            <rect key="frame" x="129" y="110.66666666666667" width="94.666666666666686" height="24.000000000000014"/>
+                                            <rect key="frame" x="130" y="110.66666666666667" width="94.666666666666686" height="24.000000000000014"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="Dvj-dH-Uhv"/>
                                             </constraints>
@@ -200,7 +205,7 @@
                                             </buttonConfiguration>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLm-NX-6g7">
-                                            <rect key="frame" x="235.66666666666666" y="110.66666666666667" width="75.333333333333343" height="24.000000000000014"/>
+                                            <rect key="frame" x="236.66666666666666" y="110.66666666666667" width="75.333333333333343" height="24.000000000000014"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="ABX-3o-duK"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="jfJ-ic-jAf"/>
@@ -214,7 +219,7 @@
                                             </buttonConfiguration>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KK3-hn-LXX">
-                                            <rect key="frame" x="323" y="110.66666666666667" width="68.666666666666686" height="24.000000000000014"/>
+                                            <rect key="frame" x="324" y="110.66666666666667" width="68.666666666666686" height="24.000000000000014"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="up3-uB-8Xe"/>
                                                 <constraint firstAttribute="height" constant="24" id="xBT-0c-biK"/>
@@ -275,6 +280,21 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPG-zk-tFa">
+                                            <rect key="frame" x="283" y="68.666666666666671" width="98" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="98" id="Vmb-4R-gt1"/>
+                                                <constraint firstAttribute="height" constant="28" id="eUO-lG-pCq"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="Subscribe">
+                                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </buttonConfiguration>
+                                            <connections>
+                                                <action selector="doSubscribe:" destination="Qwp-aU-3rt" eventType="touchUpInside" id="IQC-Hy-WD4"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -302,7 +322,9 @@
                                         <constraint firstItem="cKc-gb-rUe" firstAttribute="leading" secondItem="bJe-Gb-DBA" secondAttribute="trailing" constant="12" id="h71-0V-DWM"/>
                                         <constraint firstItem="ns4-Qd-ptg" firstAttribute="top" secondItem="iLI-5P-cUY" secondAttribute="bottom" constant="8" id="hnM-pR-IUq"/>
                                         <constraint firstItem="bJe-Gb-DBA" firstAttribute="centerY" secondItem="ioa-uW-gVc" secondAttribute="centerY" id="lVB-Y9-a7I"/>
+                                        <constraint firstAttribute="trailing" secondItem="IPG-zk-tFa" secondAttribute="trailing" constant="12" id="nWt-fy-YUv"/>
                                         <constraint firstItem="ioa-uW-gVc" firstAttribute="top" secondItem="Nc6-9Q-yjB" secondAttribute="bottom" constant="12" id="s3c-ll-k5y"/>
+                                        <constraint firstItem="IPG-zk-tFa" firstAttribute="centerY" secondItem="s6X-VW-cZx" secondAttribute="centerY" id="yH2-NK-dlN"/>
                                         <constraint firstAttribute="trailing" secondItem="Kdo-S1-Ms6" secondAttribute="trailing" constant="12" id="ykV-9r-1Hf"/>
                                         <constraint firstItem="iLI-5P-cUY" firstAttribute="leading" secondItem="Ogo-Fo-xXb" secondAttribute="leading" constant="12" id="zIv-Nn-7MA"/>
                                     </constraints>
@@ -328,7 +350,10 @@
                     </view>
                     <connections>
                         <outlet property="channelNameLabel" destination="lqP-Fb-jm3" id="iPf-AC-ba4"/>
+                        <outlet property="dislikeButton" destination="bJe-Gb-DBA" id="fQJ-3D-iS2"/>
+                        <outlet property="likeButton" destination="ioa-uW-gVc" id="k96-WH-9Vb"/>
                         <outlet property="profilePicImageView" destination="Nc6-9Q-yjB" id="sTh-Hu-u1A"/>
+                        <outlet property="subscribeButton" destination="IPG-zk-tFa" id="JPm-HC-GCT"/>
                         <outlet property="thumbnailImageView" destination="ZV1-aI-hzI" id="mCM-N2-cCc"/>
                         <outlet property="timeStampLabel" destination="0Up-nh-YmU" id="xm0-WC-Jfo"/>
                         <outlet property="videoTitleLabel" destination="iLI-5P-cUY" id="Yuv-Fo-aAd"/>

@@ -30,4 +30,21 @@ class NetworkManager {
         }
   
     }
+
+    func updateToVideos(updatedVideosData: VideosModel) {
+        guard let endPointURL = Bundle.main.url(forResource: "APIRes", withExtension: "json") else {
+            print("could not find APIResponse.json")
+            return
+        }
+        
+
+
+        do {
+            let myEncoder = JSONEncoder()
+            try myEncoder.encode(updatedVideosData).write(to: endPointURL)
+            print(updatedVideosData.videos[0])
+        } catch {
+            print("error while encoding")
+        }
+    }
 }
