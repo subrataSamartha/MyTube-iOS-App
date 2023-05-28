@@ -23,4 +23,27 @@ class DiscoverTableViewCell: UITableViewCell {
 
 }
 
+extension DiscoverTableViewCell: UICollectionViewDelegate {}
 
+extension DiscoverTableViewCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        DiscoveryData.discoveryData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let discoverCell = collectionView.dequeueReusableCell(withReuseIdentifier: "discoveryCollectionViewCell", for: indexPath) as! DiscoveryCollectionViewCell
+        discoverCell.discoveryLabel.text = DiscoveryData.discoveryData[indexPath.row]
+        
+        return discoverCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print(DiscoveryData.discoveryData[indexPath.row])
+        let filterKey = DiscoveryData.discoveryData[indexPath.row]
+        HomeFeedViewController.filterContentForHomeFeed(filterKey: filterKey.lowercased())
+//        print(type(of: filterKey))
+        
+    }
+    
+    
+}

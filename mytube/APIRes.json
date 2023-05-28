@@ -11,7 +11,8 @@
       "liked": false,
       "likeCount": 2,
       "disliked": false,
-      "subscribe": false
+      "subscribe": false,
+      "category": "music",
     },
     {
         "id": 1,
@@ -24,7 +25,8 @@
       "liked": false,
       "likeCount": 2,
       "disliked": false,
-      "subscribe": false
+      "subscribe": false,
+      "category": "music",
     },
     {
         "id": 2,
@@ -37,7 +39,8 @@
       "liked": false,
       "likeCount": 2,
       "disliked": false,
-      "subscribe": false
+      "subscribe": false,
+      "category": "bollywood",
     },
     {
         "id": 3,
@@ -50,7 +53,8 @@
       "liked": false,
       "likeCount": 2,
       "disliked": false,
-      "subscribe": false
+      "subscribe": false,
+      "category": "fashion",
     },
     {
         "id": 4,
@@ -63,7 +67,8 @@
       "liked": false,
       "likeCount": 2,
       "disliked": false,
-      "subscribe": false
+      "subscribe": false,
+      "category": "tech",
     },
     {
         "id": 5,
@@ -76,7 +81,8 @@
       "liked": false,
       "likeCount": 2,
       "disliked": false,
-      "subscribe": false
+      "subscribe": false,
+      "category": "fashion",
     },
     {
         "id": 6,
@@ -89,7 +95,8 @@
       "liked": false,
       "likeCount": 2,
       "disliked": false,
-      "subscribe": false
+      "subscribe": false,
+      "category": "music",
     },
     {
         "id": 7,
@@ -102,7 +109,8 @@
       "liked": false,
       "likeCount": 2,
       "disliked": false,
-      "subscribe": false
+      "subscribe": false,
+      "category": "tech",
     }
   ]
 }

@@ -76,7 +76,7 @@
                                 <rect key="frame" x="0.0" y="113" width="393" height="656"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="discoveryTableViewCell" rowHeight="80" id="SAA-i9-fiW" customClass="DiscoverTableViewCell" customModule="mytube" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="discoveryCellUnique" rowHeight="80" id="SAA-i9-fiW" customClass="DiscoverTableViewCell" customModule="mytube" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SAA-i9-fiW" id="6pA-Gw-sxy">
@@ -125,8 +125,8 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="BYZ-38-t0r" id="op1-RK-Gkp"/>
-                                                        <outlet property="delegate" destination="BYZ-38-t0r" id="xjz-ae-aXk"/>
+                                                        <outlet property="dataSource" destination="SAA-i9-fiW" id="Uwu-9H-MXt"/>
+                                                        <outlet property="delegate" destination="SAA-i9-fiW" id="1g4-ul-xIU"/>
                                                     </connections>
                                                 </collectionView>
                                             </subviews>
@@ -240,8 +240,8 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="BYZ-38-t0r" id="Wag-Rz-Ijo"/>
-                                                        <outlet property="delegate" destination="BYZ-38-t0r" id="q1j-cm-JGk"/>
+                                                        <outlet property="dataSource" destination="VK7-Wg-CNe" id="GD5-s4-6rN"/>
+                                                        <outlet property="delegate" destination="VK7-Wg-CNe" id="ys5-i5-Ps9"/>
                                                     </connections>
                                                 </collectionView>
                                             </subviews>

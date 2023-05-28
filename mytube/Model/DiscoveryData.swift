@@ -8,5 +8,5 @@
 import Foundation
 
 class DiscoveryData {
-    static var discoveryData = ["Discover","Music", "Bollywood", "Fashion", "Techs"]
+    static var discoveryData: [String] = ["All","Music", "Bollywood", "Fashion", "Tech"]
 }

@@ -22,3 +22,20 @@ class ShortsTableViewCell: UITableViewCell {
     }
 
 }
+
+extension ShortsTableViewCell: UICollectionViewDelegate{}
+
+extension ShortsTableViewCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        HomeFeedViewController.videosRes.videos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let shortsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "shortsCollectionViewCell", for: indexPath) as! ShortsCollectionViewCell
+        shortsCell.ShortsThumbnailmageViewer.image = UIImage(named: HomeFeedViewController.videosRes.videos[indexPath.row].thumbnail)
+        
+        return shortsCell
+    }
+    
+    
+}

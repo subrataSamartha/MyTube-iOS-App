@@ -13,8 +13,7 @@ class HomeFeedViewController: UIViewController {
     @IBOutlet weak var videosTableView: UITableView!
     static var videosRes:VideosModel = VideosModel(videos: [])
     
-    var filteredVideosRes = videosRes
-    static var filterKey = String()
+    static var filteredVideosRes = VideosModel(videos: [])
     
     
     
@@ -24,8 +23,6 @@ class HomeFeedViewController: UIViewController {
         // Do any additional setup after loading the view.
         let videoCellNib = UINib(nibName: "VideosTableViewCell", bundle: nil)
         videosTableView.register(videoCellNib, forCellReuseIdentifier: "videoCell")
-//        discoveryCollectionView.register(DiscoverTableViewCell.self, forCellWithReuseIdentifier: "discoveryCollectionViewCell")
-//        shortsCollectionView.register(ShortsCollectionViewCell.self, forCellWithReuseIdentifier: "shortsCollectionViewCell")
         
         
         NetworkManager.shared.getVideos { videosData, errorMessage in
@@ -43,8 +40,25 @@ class HomeFeedViewController: UIViewController {
 //                print(video.title)
 //            }
             HomeFeedViewController.videosRes = videos
+            
         }
     }
+    
+    static func filterContentForHomeFeed(filterKey: String) {
+        let homeFeedViewController = HomeFeedViewController()
+        let tableView = homeFeedViewController.videosTableView
+        
+        if(filterKey == "all") {
+            filteredVideosRes.videos = videosRes.videos
+        } else {
+            filteredVideosRes.videos = videosRes.videos.filter{ video in
+                return video.category.contains(filterKey)
+            }
+        }
+        tableView?.reloadData()
+        print(filteredVideosRes)
+    }
+    
 
 }
 
@@ -60,7 +74,8 @@ extension HomeFeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             RowFinder.atRow = indexPath.row
-            let discoveryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "discoveryTableViewCell") as! DiscoverTableViewCell
+            let discoveryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "discoveryCellUnique") as! DiscoverTableViewCell
+            
             return discoveryTableViewCell
         } else if indexPath.row == 2 {
             RowFinder.atRow = indexPath.row
@@ -129,12 +144,4 @@ extension HomeFeedViewController: UITableViewDataSource {
             return 290
         }
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section == 0 {
-//            return "Shorts"
-//        } else {
-//            return nil
-//        }
-//}
 }

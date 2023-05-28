@@ -11,7 +11,7 @@ class VideoPlayViewController: UIViewController {
     
     @IBOutlet weak var videosTableView: UITableView!
     
-    var videoOnPlayer: video = video(id: Int(), title: String(), thumbnail: String(), channelName: String(), profilePic: String(), views: String(), timeStamp: String(), liked: Bool(), likeCount: Int(), disliked: Bool(), subscribe: Bool())
+    var videoOnPlayer: video = video(id: Int(), title: String(), thumbnail: String(), channelName: String(), profilePic: String(), views: String(), timeStamp: String(), liked: Bool(), likeCount: Int(), disliked: Bool(), subscribe: Bool(), category: String())
     
     @IBOutlet weak var videoTitleLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!

@@ -14,4 +14,5 @@ struct video: Codable {
     var likeCount: Int
     var disliked: Bool
     var subscribe: Bool
+    var category: String
 }
